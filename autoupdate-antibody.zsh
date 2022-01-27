@@ -1,4 +1,4 @@
-# Copyright 2014 Jacob Birkett <jacob@birkett.dev>
+# Copyright 2022 Jacob Birkett <jacob@birkett.dev>
 # Copyright 2014 Joe Block <jpb@unixorn.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,13 +30,13 @@ if [ -z "$ANTIBODY_PLUGIN_SOURCE_F" ] && [ -f "$HOME/.zsh_plugins.sh" ]; then
 fi
 
 if [ -z "$ANTIBODY_PLUGIN_RECEIPT_F" ]; then
-  ANTIBODY_PLUGIN_RECEIPT_F=".antibody_plugin_lastupdate"
+  ANTIBODY_PLUGIN_RECEIPT_F="$HOME/.antibody_plugin_lastupdate"
 fi
 
 function check_interval() {
   now=$(date +%s)
-  if [ -f ~/${1} ]; then
-    last_update=$(cat ~/${1})
+  if [ -f ${1} ]; then
+    last_update=$(cat ${1})
   else
     last_update=0
   fi
@@ -47,7 +47,7 @@ function check_interval() {
 day_seconds=$(expr 24 \* 60 \* 60)
 plugins_seconds=$(expr ${day_seconds} \* ${ANTIBODY_PLUGIN_UPDATE_DAYS})
 
-last_plugin=$(check_interval ${ANTIBODY_PLUGIN_RECEIPT_F})
+last_plugin=$(check_interval "${ANTIBODY_PLUGIN_RECEIPT_F}")
 
 if [ ! -z "$ANTIBODY_PLUGIN_LIST_F" ]; then
   last_change=$(date -r "$ANTIBODY_PLUGIN_LIST_F" +%s)
@@ -63,7 +63,7 @@ if [ ${last_plugin} -gt ${plugins_seconds} ]; then
     echo "Updating antibody plugins..."
   fi
   antibody update
-  $(date +%s > ~/${ANTIBODY_PLUGIN_RECEIPT_F})
+  $(date +%s > "${ANTIBODY_PLUGIN_RECEIPT_F}")
 fi
 
 if [ ! -z "$last_change" ]; then
@@ -74,7 +74,7 @@ if [ ! -z "$last_change" ]; then
     fi
     antibody update
     antibody bundle < "$ANTIBODY_PLUGIN_LIST_F" > "$ANTIBODY_PLUGIN_SOURCE_F"
-    $(date +%s > ~/${ANTIBODY_PLUGIN_RECEIPT_F})
+    $(date +%s > "${ANTIBODY_PLUGIN_RECEIPT_F}")
   fi
 fi
 
