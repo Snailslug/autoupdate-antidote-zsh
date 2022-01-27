@@ -21,16 +21,12 @@ if [ -z "$ANTIBODY_PLUGIN_UPDATE_DAYS" ]; then
   ANTIBODY_PLUGIN_UPDATE_DAYS=7
 fi
 
-if [ -z "$ANTIBODY_PLUGIN_LIST_F" ]; then
-  if [ -f '~/.zsh_plugins.txt' ]; then
-    ANTIBODY_PLUGIN_LIST_F='~/.zsh_plugins.txt'
-  fi
+if [ -z "$ANTIBODY_PLUGIN_LIST_F" ] && [ -f "$HOME/.zsh_plugins.txt" ]; then
+    ANTIBODY_PLUGIN_LIST_F="$HOME/.zsh_plugins.txt"
 fi
 
-if [ -z "$ANTIBODY_PLUGIN_SOURCE_F" ]; then
-  if [ -f '~/.zsh_plugins.sh' ]; then
-    ANTIBODY_PLUGIN_SOURCE_F='~/.zsh_plugins.sh'
-  fi
+if [ -z "$ANTIBODY_PLUGIN_SOURCE_F" ] && [ -f "$HOME/.zsh_plugins.sh" ]; then
+    ANTIBODY_PLUGIN_SOURCE_F="$HOME/.zsh_plugins.sh"
 fi
 
 if [ -z "$ANTIBODY_PLUGIN_RECEIPT_F" ]; then
@@ -83,6 +79,7 @@ if [ ! -z "$last_change" ]; then
 fi
 
 # clean up after ourselves
+unset ANTIBODY_AUTOUPDATE_VERBOSE
 unset ANTIBODY_PLUGIN_RECEIPT_F
 unset ANTIBODY_PLUGIN_UPDATE_DAYS
 unset ANTIBODY_PLUGIN_LIST_F
