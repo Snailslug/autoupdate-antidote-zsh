@@ -71,7 +71,9 @@ if [ ! -z "$last_change" ]; then
       echo "Changes were made to your plugin list, but have not been bundled yet."
       echo "Updating antibody plugins..."
     fi
+    antibody update
     antibody bundle < "$ANTIBODY_PLUGIN_LIST_F" > "$ANTIBODY_PLUGIN_SOURCE_F"
+    $(date +%s > ~/${ANTIBODY_PLUGIN_RECEIPT_F})
   fi
 fi
 
