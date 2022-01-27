@@ -1,9 +1,9 @@
-# autoupdate-antibody.zshplugin
+# autoupdate-antibody-zsh
 
-Antibody doesn't do automatic updates like [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh). Set up easy
+Antibody doesn't do automatic updates like [oh-my-zsh](https://github.com/oh-my-zsh/oh-my-zsh). Set up easy
 auto updating, both of antibody and the bundles loaded in your configuration.
 
-Activate with `antibody bundle unixorn/autoupdate-antibody.zshplugin`
+Activate with `antibody bundle spikespaz/autoupdate-antibody-zsh`
 
 ## Customization
 
