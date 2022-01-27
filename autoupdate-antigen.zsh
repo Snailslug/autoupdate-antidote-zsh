@@ -58,8 +58,8 @@ fi
 
 if [ ${last_plugin} -gt ${plugins_seconds} ]; then
   if [ ! -z "$ANTIBODY_AUTOUPDATE_VERBOSE" ]; then
-    echo "It has been $(expr ${last_plugin} / $day_seconds) days since your antibody plugins were updated"
-    echo "Updating plugins"
+    echo "It has been $(expr ${last_plugin} / $day_seconds) days since your antibody plugins were updated."
+    echo "Updating antibody plugins..."
   fi
   antibody update
   $(date +%s > ~/${ANTIBODY_PLUGIN_RECEIPT_F})
@@ -68,7 +68,7 @@ fi
 if [ ! -z "$last_change" ]; then
   if [ -z "$last_bundle" ] || [ ${last_change} -gt ${last_bundle} ]; then
     if [ ! -z "$ANTIBODY_AUTOUPDATE_VERBOSE" ]; then
-      echo "Changes were made to your plugin list, but have not been bundled yet"
+      echo "Changes were made to your plugin list, but have not been bundled yet."
       echo "Updating antibody plugins..."
     fi
     antibody bundle < "$ANTIBODY_PLUGIN_LIST_F" > "$ANTIBODY_PLUGIN_SOURCE_F"
