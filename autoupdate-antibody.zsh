@@ -30,7 +30,7 @@ if [ -z "$ANTIBODY_PLUGIN_SOURCE_F" ] && [ -f "$HOME/.zsh_plugins.sh" ]; then
 fi
 
 if [ -z "$ANTIBODY_PLUGIN_RECEIPT_F" ]; then
-  ANTIBODY_PLUGIN_RECEIPT_F='.antibody_plugin_lastupdate'
+  ANTIBODY_PLUGIN_RECEIPT_F=".antibody_plugin_lastupdate"
 fi
 
 function check_interval() {
