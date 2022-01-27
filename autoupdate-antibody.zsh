@@ -54,11 +54,11 @@ plugins_seconds=$(expr ${day_seconds} \* ${ANTIBODY_PLUGIN_UPDATE_DAYS})
 last_plugin=$(check_interval ${ANTIBODY_PLUGIN_RECEIPT_F})
 
 if [ ! -z "$ANTIBODY_PLUGIN_LIST_F" ]; then
-  last_change=$(date -f "$ANTIBODY_PLUGIN_LIST_F" +%s)
+  last_change=$(date -r "$ANTIBODY_PLUGIN_LIST_F" +%s)
 fi
 
 if [ ! -z "$ANTIBODY_PLUGIN_SOURCE_F" ]; then
-  last_bundle=$(date -f "$ANTIBODY_PLUGIN_SOURCE_F" +%s)
+  last_bundle=$(date -r "$ANTIBODY_PLUGIN_SOURCE_F" +%s)
 fi
 
 if [ ${last_plugin} -gt ${plugins_seconds} ]; then
