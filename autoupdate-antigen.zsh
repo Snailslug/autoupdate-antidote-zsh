@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+if [ -z "$ANTIBODY_AUTOUPDATE_VERBOSE" ]; then
+  ANTIBODY_AUTOUPDATE_VERBOSE=true
+fi
+
 if [ -z "$ANTIBODY_PLUGIN_UPDATE_DAYS" ]; then
   ANTIBODY_PLUGIN_UPDATE_DAYS=7
 fi
@@ -57,7 +61,7 @@ if [ ! -z "$ANTIBODY_PLUGIN_SOURCE_F" ]; then
 fi
 
 if [ ${last_plugin} -gt ${plugins_seconds} ]; then
-  if [ ! -z "$ANTIBODY_AUTOUPDATE_VERBOSE" ]; then
+  if [ "$ANTIBODY_AUTOUPDATE_VERBOSE" = true ]; then
     echo "It has been $(expr ${last_plugin} / $day_seconds) days since your antibody plugins were updated."
     echo "Updating antibody plugins..."
   fi
@@ -67,7 +71,7 @@ fi
 
 if [ ! -z "$last_change" ]; then
   if [ -z "$last_bundle" ] || [ ${last_change} -gt ${last_bundle} ]; then
-    if [ ! -z "$ANTIBODY_AUTOUPDATE_VERBOSE" ]; then
+    if [ "$ANTIBODY_AUTOUPDATE_VERBOSE" = true ]; then
       echo "Changes were made to your plugin list, but have not been bundled yet."
       echo "Updating antibody plugins..."
     fi
